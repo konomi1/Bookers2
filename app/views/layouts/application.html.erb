@@ -10,11 +10,23 @@
   </head>
 
   <body>
+    <li>
+      <%= link_to "Home", "/" %>
+    </li>
     <% if user_signed_in? %>
+      <li>
+        <%= link_to "Users", "#" %>
+      </li>
+      <li>
+        <%= link_to "Books", "#" %>
+      </li>
       <li>
         <%= link_to "logout", destroy_user_session_path, method: :delete %>
       </li>
     <% else %>
+       <li>
+      <%= link_to "About", about_homes_path %>
+      </li>
       <li>
         <%= link_to "sign up", new_user_registration_path %>
       </li>
