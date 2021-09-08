@@ -1,2 +1,54 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<main>
+  <div class="container px-5">
+    <div class="row">
+
+      <div class="col-lg-4">
+        <h2>User info</h2>
+        <table class="table ble-striped">
+          <tr>
+            <th>name</th>
+            <th></th>
+          </tr>
+          <tr>
+            <th>introduction</th>
+            <th></th>
+          </tr>
+        </table>
+
+        <%= link_to "setting",edit_user_registration_path, class:"btn btn-secondary fas fa-user-cog"%>
+
+        <h2>New book</h2>
+        <%=form_with model: @book, local:true do |f|%>
+          <p>Title</p>
+          <%= f.text_field :title %>
+          <p>Opinion</p>
+          <%= f.text_area :body %>
+          <%= f.submit "Create Book"%>
+        <% end %>
+
+      </div>
+
+      <div class="col-lg-8">
+        <h2>Books</h2>
+        <table class="table table-hover">
+          <thread>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Title</th>
+              <th scope="col">Opinion</th>
+            </tr>
+          </thread>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+
+  </div>
+</main>

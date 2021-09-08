@@ -1,0 +1,20 @@
+<div class="col-lg-4">
+
+  <h2>User info</h2>
+    <%= attachment_image_tag user, :profile_image, :fill,60,60, fallback:"no_image.jpg" %>
+  <table class="table ble-striped">
+    <tr>
+      <th>name</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>introduction</th>
+      <th></th>
+    </tr>
+  </table>
+
+  <%= link_to ,"#", class="btn btn-secondary fas fa-user-cog"%>
+
+  <h2>New book</h2>
+
+</div>
