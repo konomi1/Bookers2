@@ -1,7 +1,7 @@
-<div class="col-lg-4">
+<div class="col-lg-4 mt-3">
   <h2>User info</h2>
   <%= attachment_image_tag current_user, :profile_image, :fill,60,60, fallback:"no_image.jpg" %>
-  <table class="table ble-striped">
+  <table class="table ble-striped mb-4">
     <tr>
       <th>name</th>
       <th><%= current_user.name %></th>
@@ -12,14 +12,22 @@
     </tr>
   </table>
 
-  <%= link_to "setting", "/users/#{current_user.id}/edit", class:"btn btn-secondary fas fa-user-cog"%>
+  <%= link_to "/users/#{current_user.id}/edit", class:"btn btn-outline-secondary btn-sm btn-block" do %>
+    <i class="fas fa-user-cog"></i>
+  <% end %>
 
-  <h2>New book</h2>
+  <h2 class="mt-3">New book</h2>
   <%=form_with model: book, local:true do |f|%>
+    <div class="field">
     <p>Title</p>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class:"form-control" %>
+    </div>
+    <div class="field">
     <p>Opinion</p>
-    <%= f.text_area :body %>
-    <%= f.submit "Create Book"%>
+    <%= f.text_area :body, class:"form-control" %>
+    </div>
+    <div>
+    <%= f.submit "Create Book", class:"btn btn-success btn-md mt-2" %>
+    </div>
   <% end %>
 </div>
