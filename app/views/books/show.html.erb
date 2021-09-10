@@ -4,19 +4,19 @@
 
     <%= render 'users/sidebar', book: @newbook %>
 
-    <div class="col-lg-8 offset-md-1 mt-3">
-      <h2>Books detail</h2>
+    <div class="col-md-8 offset-md-1 mt-3">
+      <h2>Book detail</h2>
       <table class="table">
         <tbody>
           <tr>
             <td>
-              <%= link_to user_path(@book) do %>
+              <%= link_to user_path(@book.user.id) do %>
                 <%= attachment_image_tag @book.user, :profile_image, fallback:"no_image.jpg", size:'40x40' %><br />
                 <%= @book.user.name %>
               <% end %>
             </td>
             <td>
-              <%= link_to book_path(@book) do %>
+              <%= link_to book_path(@book.id) do %>
                 <%= @book.title%>
               <% end %>
             </td>
@@ -24,7 +24,7 @@
 
             <% if @book.id == current_user.id%>
             <td>
-              <%= link_to "Edit", edit_book_path, class:"btn btn-success btn-sm"%>
+              <%= link_to "Edit", edit_book_path(@book.id), class:"btn btn-success btn-sm"%>
             </td>
             <td>
               <%= link_to "Destroy", "/books/#{@book.id}", class:"btn btn-danger btn-sm", method: :delete %>
