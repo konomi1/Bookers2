@@ -1,39 +1,40 @@
-<main>
-  <div class="container px-5">
-    <div class="row">
 
-      <%= render 'users/sidebar', book: @newbook %>
+<div class="container px-5">
+  <div class="row">
 
-      <div class="col-lg-8">
-        <h2>Books detail</h2>
-        <table class="table">
-          <tbody>
-            <tr>
-              <td>
-                <%= link_to user_path(@book) do %>
-                  <%= attachment_image_tag @book.user, :profile_image, fallback:"no_image.jpg", size:'40x40' %><br />
-                  <%= @book.user.name %>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to book_path(@book) do %>
-                  <%= @book.title%>
-                <% end %>
-              </td>
-              <td><%= @book.body%></td>
-              <td>
-                <%= link_to "Edit", edit_book_path, class:"btn btn-success btn-sm"%>
-              </td>
-              <td>
-                <%= link_to "Destroy", "/books/#{@book.id}", class:"btn btn-danger btn-sm", method: :delete %>
+    <%= render 'users/sidebar', book: @newbook %>
 
-              </td>
-            </tr>
-          </tbody>
+    <div class="col-lg-8">
+      <h2>Books detail</h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to user_path(@book) do %>
+                <%= attachment_image_tag @book.user, :profile_image, fallback:"no_image.jpg", size:'40x40' %><br />
+                <%= @book.user.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to book_path(@book) do %>
+                <%= @book.title%>
+              <% end %>
+            </td>
+            <td><%= @book.body%></td>
 
-        </table>
-      </div>
+            <% if @book.id == current_user.id%>
+            <td>
+              <%= link_to "Edit", edit_book_path, class:"btn btn-success btn-sm"%>
+            </td>
+            <td>
+              <%= link_to "Destroy", "/books/#{@book.id}", class:"btn btn-danger btn-sm", method: :delete %>
+            </td>
+            <% end %>
+          </tr>
+        </tbody>
+
+      </table>
     </div>
-
   </div>
-</main>
+
+</div>

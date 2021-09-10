@@ -16,5 +16,12 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
- 
- 
+
+
+ .errors-box {
+  color: #ff0000;
+ }
+
+ .success-message {
+  color: green;
+ }

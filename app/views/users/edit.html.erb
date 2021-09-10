@@ -1,8 +1,17 @@
-
 <div class="container">
   <div class="row">
-    <div class="col-lg-4 mx-auto" style="width: 400px;">
+    <div class="col-lg-5 mx-auto" style="width: 200px;">
       <h2>User info</h2>
+      <div class="errors-box ">
+        <% if @user.errors.any? %>
+          <h3><%= pluralize(@user.errors.count,"error") %> prohibited this obj from being saved:</h3>
+            <ul>
+              <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+            </ul>
+        <% end %>
+      </div>
       <%= form_with model:@user, local:true do |f|%>
 
         <div class=field>

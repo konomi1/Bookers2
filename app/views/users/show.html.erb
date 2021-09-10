@@ -1,41 +1,40 @@
-<main>
-  <div class="container px-5">
-    <div class="row">
 
-      <%= render 'users/sidebar', book: @newbook %>
+<div class="container px-5">
+  <div class="row">
 
-      <div class="col-lg-8">
-        <h2>Books</h2>
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col"> </th>
-              <th scope="col">Title</th>
-              <th scope="col">Opinion</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @user.books.each do |book|%>
-            <tr>
-              <td>
-                <%= link_to user_path(@user) do%>
-                  <%= attachment_image_tag book.user, :profile_image, fallback:"no_image.jpg", size:'40x40' %>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to book_path(book) do%>
-                 <%= book.title%>
-                <% end %>
-              </td>
-              <td><%= book.body%></td>
-            </tr>
-            <% end %>
-          </tbody>
+    <%= render 'users/sidebar', book: @newbook %>
 
-        </table>
-      </div>
+    <div class="col-lg-8">
+      <h2>Books</h2>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col"> </th>
+            <th scope="col">Title</th>
+            <th scope="col">Opinion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @user.books.each do |book|%>
+          <tr>
+            <td>
+              <%= link_to user_path(@user) do%>
+                <%= attachment_image_tag book.user, :profile_image, fallback:"no_image.jpg", size:'40x40' %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to book_path(book) do%>
+               <%= book.title%>
+              <% end %>
+            </td>
+            <td><%= book.body%></td>
+          </tr>
+          <% end %>
+        </tbody>
+
+      </table>
     </div>
-
   </div>
-</main>
+
+</div>
 

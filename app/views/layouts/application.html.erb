@@ -53,7 +53,14 @@
         </div>
       </nav>
     </header>
+    <main>
+      <div class="success-message">
+      <% if flash[:notice]%>
+        <%= flash[:notice] %>
+      <% end %>
+      </div>
     <%= yield %>
+    </main>
   </body>
   <footer>
     <div class=row>
