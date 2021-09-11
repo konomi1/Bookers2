@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @newbook = Book.new
+    @user = current_user
   end
 
   def create

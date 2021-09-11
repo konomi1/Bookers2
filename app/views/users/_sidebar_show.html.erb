@@ -1,31 +1,17 @@
 <div class="col-md-3 mt-3">
   <h2>User info</h2>
 
-  <% if user == current_user %>
-    <%= attachment_image_tag user, :profile_image, :fill,60,60, fallback:"no_image.jpg" %>
-    <table class="table ble-striped mb-4">
-      <tr>
-        <th>name</th>
-        <th><%= user.name %></th>
-      </tr>
-      <tr>
-        <th>introduction</th>
-        <th><%= user.introduction %></th>
-      </tr>
-    </table>
-  <% else %>
-    <%= attachment_image_tag user, :profile_image, :fill,60,60, fallback:"no_image.jpg" %>
-    <table class="table ble-striped mb-4">
-      <tr>
-        <th>name</th>
-        <th><%= user.name %></th>
-      </tr>
-      <tr>
-        <th>introduction</th>
-        <th><%= user.introduction %></th>
-      </tr>
-    </table>
-  <% end %>
+  <%= attachment_image_tag user, :profile_image, :fill,60,60, fallback:"no_image.jpg" %>
+  <table class="table ble-striped mb-4">
+    <tr>
+      <th>name</th>
+      <th><%= user.name %></th>
+    </tr>
+    <tr>
+      <th>introduction</th>
+      <th><%= user.introduction %></th>
+    </tr>
+  </table>
 
   <%= link_to "/users/#{user.id}/edit", class:"btn btn-outline-secondary btn-sm btn-block" do %>
     <i class="fas fa-user-cog"></i>
