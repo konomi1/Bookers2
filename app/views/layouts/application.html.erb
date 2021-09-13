@@ -23,7 +23,7 @@
 
             <% if user_signed_in? %>
               <li class="nav-item py-1">
-                <%= link_to " Home", user_path(current_user.id), class: 'fas fa-home nav-link text-light' %>
+                <%= link_to " Home", user_path(current_user), class: 'fas fa-home nav-link text-light' %>
               </li>
               <li class="nav-item py-1">
                 <%= link_to " Users", users_path, class: 'fas fa-users nav-link text-light' %>
