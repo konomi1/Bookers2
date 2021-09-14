@@ -69,6 +69,16 @@
           </tbody>
         </table>
         <div class="comments-form">
+          <div class="errors-box ">
+            <% if @book_comment.errors.any? %>
+              <h3><%= pluralize(@book_comment.errors.count,"error") %> prohibited this obj from being saved:</h3>
+                <ul>
+                  <% @book_comment.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                  <% end %>
+                </ul>
+            <% end %>
+          </div>
           <%= form_with(model:[@book,@book_comment], local:true) do |f| %>
             <%= f.text_area :comment, class:"comment-form" %>
             <p><%= f.submit "送信" %></p>
