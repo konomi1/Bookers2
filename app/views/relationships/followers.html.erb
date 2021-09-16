@@ -1,8 +1,5 @@
 
 <div class="container m-0 p-0">
   <h2 class="mt-3"> Follower Users</h2>
-  <% if @users.count == 0 %>
-    <p>ユーザーはいません</p>
-  <% end %>
 </div>
-<% render "relationships/index", users: @users%>
+<%= render "relationships/index", users: @users%>
