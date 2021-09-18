@@ -56,7 +56,7 @@
                 </ul>
             <% end %>
           </div>
-          <%= form_with(model:[@book,@book_comment], remote: true) do |f| %>
+          <%= form_with(model:[@book,@book_comment], class:"js-form") do |f| %>
             <%= f.text_area :comment, class:"comment-form" %>
             <p><%= f.submit "送信" %></p>
           <% end %>
