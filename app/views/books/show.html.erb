@@ -26,7 +26,7 @@
                 <%= render 'favorites/favorite', book: @book%>
               </div>
             </td>
-            <td>
+            <td id='comment_counts_<%=@book.id%>'>
               コメント数: <%= @book.book_comments.count %>
             </td>
 
@@ -46,16 +46,7 @@
           <%= render "book_comments/comments", book: @book %>
         </div>
         <div class="comments-form">
-          <div class="errors-box ">
-            <% if @book_comment.errors.any? %>
-              <h3><%= pluralize(@book_comment.errors.count,"error") %> prohibited this obj from being saved:</h3>
-                <ul>
-                  <% @book_comment.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                  <% end %>
-                </ul>
-            <% end %>
-          </div>
+            <%= render "book_comments/errors", obj: @book_comment%>
           <%= form_with(model:[@book,@book_comment], class:"js-form") do |f| %>
             <%= f.text_area :comment, class:"comment-form" %>
             <p><%= f.submit "送信" %></p>

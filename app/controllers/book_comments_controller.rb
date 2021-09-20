@@ -4,10 +4,8 @@ class BookCommentsController < ApplicationController
     @book = Book.find(params[:book_id])
     @book_comment = current_user.book_comments.new(book_comment_params)
     @book_comment.book_id = @book.id
-    if @book_comment.save
-    else
-      @newbook = Book.new
-      @user = @book.user
+    unless @book_comment.save
+      render :error
     end
   end
 
