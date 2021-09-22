@@ -1,0 +1,28 @@
+<div class="container m-0 p-0">
+  <h2 class="rooms-title"><%= @entries[1].user.name%>さんとのチャット</h2>
+  <table class="table.table-borderless">
+    <thead>
+      <% if @messages.present? %>
+        <% @messages.each do |m| %>
+          <tr>
+            <td> </td>
+            <td><p><%= m.message %></p></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="posts mr-5">
+            <%= form_for @message do |f| %>
+              <%= f.text_field :message, size: 20 %>
+                <%= f.hidden_field :room_id, value: @room.id %>
+            <% end %>
+          </div>
+        </td>
+        <td> </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
