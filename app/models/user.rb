@@ -36,8 +36,4 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
-  def followed_by?(user)
-    passive_relationships.find_by(followed_id: user.id).present?
-  end
-
 end
