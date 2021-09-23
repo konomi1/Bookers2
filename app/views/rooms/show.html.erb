@@ -1,0 +1,18 @@
+<h2 class="rooms-title"><%= @user.name%>さんとのチャット</h2>
+
+<div class="saymessage" style="width: 400px;">
+  <% @messages.each do |m| %>
+    <% if m.user_id == current_user.id%>
+      <p style="text-align: right;"><%= m.message %></p>
+    <% else %>
+      <p style="text-align: left;"><%= m.message %></p>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="posts mr-5">
+  <%= form_with model: @message, local: true do |f| %>
+    <%= f.text_field :message%>
+    <%= f.hidden_field :room_id %>
+  <% end %>
+</div>
