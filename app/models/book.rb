@@ -15,4 +15,6 @@ class Book < ApplicationRecord
   validates :body, presence: true,  length: { maximum: 200 }
 
 
+    scope :day_book_count, -> (count){ where(created_at: (count).day.ago.all_day).count}
+
 end

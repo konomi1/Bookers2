@@ -38,7 +38,7 @@
         </tbody>
       </table>
 
-      <div class="day_counts">
+      <div>
         <h2>投稿数の前日比・前週比</h2>
         <table class="table table-bordered">
           <thead>
@@ -70,6 +70,32 @@
           </tbody>
         </table>
       </div>
+
+      <div>
+        <h2>7日間分の投稿数</h2>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">6日前</th>
+              <th scope="col">5日前</th>
+              <th scope="col">4日前</th>
+              <th scope="col">3日前</th>
+              <th scope="col">2日前</th>
+              <th scope="col">1日前</th>
+              <th scope="col">今日</th>
+            </tr>
+          </thead>
+          <tbody>
+            <td><%= @books.day_book_count(6) %></td>
+            <td><%= @books.day_book_count(5) %></td>
+            <td><%= @books.day_book_count(4) %></td>
+            <td><%= @books.day_book_count(3) %></td>
+            <td><%= @books.day_book_count(2) %></td>
+            <td><%= @books.day_book_count(1) %></td>
+            <td><%= @user.today_count %></td>
+
+          </tbody>
+        </table>
 
     </div>
   </div>
