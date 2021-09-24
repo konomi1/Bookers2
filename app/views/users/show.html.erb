@@ -93,10 +93,51 @@
             <td><%= @books.day_book_count(2) %></td>
             <td><%= @books.day_book_count(1) %></td>
             <td><%= @user.today_count %></td>
-
           </tbody>
         </table>
+      </div>
 
+      <canvas id="myChart" width="400" height="200"></canvas>
+      <script>
+      $(document).on('turbolinks:load', function() {
+          var ctx = document.getElementById('myChart');
+          var myChart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                  labels: ['6日前', '5日前', '4日前', '3日前', '2日前', '1日前', '今日'],
+                  datasets: [{
+                      label: '投稿した本の数',
+                      data: [
+                          <%= @books.day_book_count(6) %>,
+                          <%= @books.day_book_count(5) %>,
+                          <%= @books.day_book_count(4) %>,
+                          <%= @books.day_book_count(3) %>,
+                          <%= @books.day_book_count(2) %>,
+                          <%= @books.day_book_count(1) %>,
+                          <%= @user.today_count %>
+                      ],
+                      fill: false,
+                      borderColor: 'blue',
+                      tension: 0.3
+                  }]
+              },
+              options: {
+                  scales: {
+                      y: {
+                          beginAtZero: true,
+                          suggestedMax: 10
+                      }
+                  },
+                  plugins: {
+                    title: {
+                      display: true,
+                      text: '7日間の投稿数の比較'
+                    }
+                  }
+              }
+          });
+      });
+      </script>
     </div>
   </div>
 
