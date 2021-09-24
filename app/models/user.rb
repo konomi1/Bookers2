@@ -36,6 +36,7 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  # 集計
   def today_count
     books.where(created_at: Date.today.all_day).count
   end
@@ -45,22 +46,18 @@ class User < ApplicationRecord
   end
 
   def day_percent
-    today_count / yesterday_count * 100 rescue 0
+    (today_count / yesterday_count.to_f * 100).round rescue "(前日の投稿が0のため計算できません)0"
   end
 
   def this_week
-    to = Time.current.at_beginning_of_day
-    from = (to - 6.day).at_end_of_day
-    books.where(created_at: from..to).count
+    books.where(created_at: 6.day.ago.beginning_of_day..Date.today.end_of_day).count
   end
 
   def last_week
-    to = 7.day.ago.at_beginning_of_day
-    from = (to - 6.day).at_end_of_day
-    books.where(created_at: from..to).count
+    books.where(created_at: 2.week.ago.beginning_of_day..1.week.ago.end_of_day).count
   end
 
   def week_percent
-    this_week / last_week * 100 rescue 0
+    (this_week / last_week.to_f * 100).round rescue "(先週の投稿が0のため計算できません)0"
   end
 end
