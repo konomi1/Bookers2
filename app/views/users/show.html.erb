@@ -36,8 +36,41 @@
           </tr>
           <% end %>
         </tbody>
-
       </table>
+
+      <div class="day_counts">
+        <h2>投稿数の前日比・前週比</h2>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">今日の投稿数</th>
+              <th scope="col">前日の投稿数</th>
+              <th scope="col">前日比</th>
+            </tr>
+          </thead>
+          <tbody>
+            <td><%= @user.today_count %></td>
+            <td><%= @user.yesterday_count %></td>
+            <td><%=@user.day_percent%>%</td>
+          </tbody>
+        </table>
+
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">今週の投稿数</th>
+              <th scope="col">前週の投稿数</th>
+              <th scope="col">前週比</th>
+            </tr>
+          </thead>
+          <tbody>
+            <td><%=@user.this_week%></td>
+            <td><%=@user.last_week%></td>
+            <td><%=@user.week_percent%>%</td>
+          </tbody>
+        </table>
+      </div>
+
     </div>
   </div>
 

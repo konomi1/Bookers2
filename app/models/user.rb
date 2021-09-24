@@ -36,4 +36,31 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  def today_count
+    books.where(created_at: Date.today.all_day).count
+  end
+
+  def yesterday_count
+    books.where(created_at: 1.day.ago.all_day).count
+  end
+
+  def day_percent
+    today_count / yesterday_count * 100 rescue 0
+  end
+
+  def this_week
+    to = Time.current.at_beginning_of_day
+    from = (to - 6.day).at_end_of_day
+    books.where(created_at: from..to).count
+  end
+
+  def last_week
+    to = 7.day.ago.at_beginning_of_day
+    from = (to - 6.day).at_end_of_day
+    books.where(created_at: from..to).count
+  end
+
+  def week_percent
+    this_week / last_week * 100 rescue 0
+  end
 end
