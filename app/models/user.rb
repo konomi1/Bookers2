@@ -18,6 +18,9 @@ class User < ApplicationRecord
   has_many :messages
   has_many :rooms, through: :entries
 
+  has_many :group_users
+  has_many :groups, through: :group_users
+
 
   attachment :profile_image
 

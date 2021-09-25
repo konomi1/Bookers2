@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'groups/new'
+  get 'groups/create'
+  get 'groups/show'
+  get 'groups/index'
+  get 'groups/edit'
+  get 'groups/update'
   devise_for :users
   root 'homes#top'
   get 'home/about', to: 'homes#about'
@@ -14,6 +20,8 @@ Rails.application.routes.draw do
 
   resources :rooms, only: [:show, :create]
   resources :messages, only: [:create]
+
+  resources :groups, only: [:new, :create, :show, :index, :edit, :update]
 
   resources :books do
     resources :book_comments, only: [:create, :destroy]
