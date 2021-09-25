@@ -19,6 +19,8 @@ class UsersController < ApplicationController
   def show
     @user=User.find(params[:id])
     @books = @user.books
+    date = params[:created_at]
+    @records = @books.where("created_at LIKE?", date+"%" )
   end
 
   def edit

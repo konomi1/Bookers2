@@ -60,5 +60,5 @@ class User < ApplicationRecord
   def week_percent
     (this_week / last_week.to_f * 100).round rescue "(先週の投稿が0のため計算できません)0"
   end
-  
+
 end
