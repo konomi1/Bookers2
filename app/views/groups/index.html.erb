@@ -15,6 +15,7 @@
             <th scope="col"> </th>
             <th scope="col">グループ名</th>
             <th scope="col">紹介文</th>
+            <th scope="col">メンバー数</th>
           </tr>
         </thead>
         <tbody>
@@ -27,6 +28,7 @@
               <% end %>
             </td>
             <td><%= group.introduction %></td>
+            <td><%= group.users.count %>人</td>
             <td>
               <% if group.owner_id == current_user.id %>
                 <%= link_to "Edit", edit_group_path(group), class: "btn btn-success btn-sm"%>

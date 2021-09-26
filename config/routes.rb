@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   resources :rooms, only: [:show, :create]
   resources :messages, only: [:create]
 
-  resources :groups, only: [:new, :create, :show, :index, :edit, :update]
+  resources :groups do
+    post 'join' => 'groups#join'
+  end
 
   resources :books do
     resources :book_comments, only: [:create, :destroy]

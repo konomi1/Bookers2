@@ -10,6 +10,14 @@
       <h2>Group Detail</h2>
 
       <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col"> </th>
+            <th scope="col">グループ名</th>
+            <th scope="col">紹介文</th>
+            <th scope="col">メンバー</th>
+          </tr>
+        </thead>
         <tbody>
           <tr>
             <td><%= attachment_image_tag @group, :image, fallback:"no_image.jpg", size:'40x40' %></td>
@@ -18,8 +26,17 @@
             </td>
             <td><%= @group.introduction %></td>
             <td>
+              <% @group.users.each do |member|%>
+                <%= member.name %><br />
+              <% end %>
+            </td>
+            <td>
               <% if @group.owner_id == current_user.id %>
                 <%= link_to "Edit", edit_group_path(@group), class: "btn btn-success btn-sm"%>
+              <% elsif @group.users.include?(current_user) %>
+                <%= link_to "Leave this group", group_path(@group), method: :delete, class:"btn btn-danger"%>
+              <% else %>
+                <%= link_to "Join this group", group_join_path(@group), method: :post, class: "btn btn-success"%>
               <% end %>
             </td>
           </tr>
