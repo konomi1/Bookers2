@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'groups/new'
-  get 'groups/create'
-  get 'groups/show'
-  get 'groups/index'
-  get 'groups/edit'
-  get 'groups/update'
   devise_for :users
   root 'homes#top'
   get 'home/about', to: 'homes#about'
@@ -23,6 +17,8 @@ Rails.application.routes.draw do
 
   resources :groups do
     post 'join' => 'groups#join'
+    get 'new_mail' => 'groups#new_mail'
+    get 'send_mail' => 'groups#send_mail'
   end
 
   resources :books do

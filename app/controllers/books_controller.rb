@@ -25,7 +25,7 @@ class BooksController < ApplicationController
     @newbook = Book.new
     @book = Book.find(params[:id])
     @book_comment = BookComment.new
-    impressionist(@book, nil, unique: [:ip_address]) 
+    impressionist(@book, nil, unique: [:ip_address])
   end
 
   def edit
@@ -55,7 +55,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body,)
+    params.require(:book).permit(:title, :body, :rate,)
   end
 
 end

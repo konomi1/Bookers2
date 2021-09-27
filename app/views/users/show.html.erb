@@ -33,6 +33,19 @@
             </td>
             <td><%= book.body%></td>
             <td>コメント数: <%= book.book_comments.count%></td>
+            <td>
+              <div id="star-rate<%= book.id%>"></div>
+              <script>
+                $('#star-rate<%= book.id%>').raty({
+                  size      : 36,
+                  starOff   : '<%= asset_path('star-off.png') %>',
+                  starOn    : '<%= asset_path('star-on.png') %>',
+                  half      : false,
+                  readOnly: true,
+                  score: <%= book.rate %>,
+                });
+              </script>
+            </td>
           </tr>
           <% end %>
         </tbody>
