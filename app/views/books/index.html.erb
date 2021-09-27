@@ -20,6 +20,7 @@
     </div>
     <div class="col-md-8 offset-md-1 mt-3">
       <h2>Books</h2>
+      <p><%= link_to "新しい順",books_path(sort_latest: "true") %> | <%= link_to "評価の高い順",books_path(sort_rate_high: "true") %> | <%= link_to "お気に入り順",books_path(sort_favoritest: "true") %></p>
       <table class="table table-hover">
         <thead>
           <tr>
@@ -55,7 +56,7 @@
               <div id="star-rate<%= book.id%>"></div>
               <script>
                 $('#star-rate<%= book.id%>').raty({
-                  size      : 36,
+                  size      : 25,
                   starOff   : '<%= asset_path('star-off.png') %>',
                   starOn    : '<%= asset_path('star-on.png') %>',
                   half      : false,

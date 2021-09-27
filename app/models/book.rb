@@ -17,5 +17,8 @@ class Book < ApplicationRecord
   end
 
     scope :day_book_count, -> (count){ where(created_at: (count).day.ago.all_day).count}
+    scope :latest, -> { order(created_at: :desc) }
+    scope :favoritest, -> { includes(:book_favorites).sort_by{|x|[-x.book_favorites.size,x.book_favorites.where(created_at: 6.day.ago.beginning_of_day..Date.today.end_of_day)] }}
+    scope :rate_high, -> { order(rate: :desc)}
 
 end

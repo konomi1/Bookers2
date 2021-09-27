@@ -14,13 +14,12 @@
   <%= f.label :rate, "Rate" %>
   <%= f.hidden_field :rate, id: :review_star %>
   </div>
-  <!-- 評価javascript -->
+
   <script>
   $('#star').raty({
     size: 36,
     starOff: '<%= asset_path('star-off.png') %>',
     starOn: '<%= asset_path('star-on.png') %>',
-
     scoreName: 'book[rate]',
     half: false,
   });
