@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'home/about', to: 'homes#about'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'search_books' => 'books#search'
   get '/search', to: 'searches#search'
 
   resources :users, only: [:index, :show, :edit, :update]do

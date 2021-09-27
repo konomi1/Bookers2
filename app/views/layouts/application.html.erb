@@ -34,6 +34,12 @@
               <li class="nav-item py-1">
                 <%= link_to " logout", destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light' %>
               </li>
+              <li class="nav-item py-1">
+                <%= form_with url: search_books_path, method: :get, local: true do |f| %>
+                <%= f.text_field :word %>
+                <%= f.submit '検索', class:"btn btn-primary btn-sm" %>
+              <% end %>
+              </li>
             <% else %>
             <li class="nav-item py-1">
               <%= link_to " Home", '/', class: 'fas fa-home nav-link text-light' %>

@@ -10,6 +10,11 @@
   <%= f.text_area :body, class:"form-control" %>
   </div>
 
+  <div class="field">
+  <%= f.label :category, "Category" %><br />
+  <%= f.text_field :category, class:"form-control" %>
+  </div>
+
   <div class="field" id="star">
   <%= f.label :rate, "Rate" %>
   <%= f.hidden_field :rate, id: :review_star %>

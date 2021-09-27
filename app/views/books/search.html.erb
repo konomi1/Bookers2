@@ -1,0 +1,17 @@
+<div class="container px-5">
+  <div class="row">
+    <div class="col-md-3 mt-3">
+
+    <%= render 'users/usersinfo', user: current_user %>
+    <%= render 'books/newbook', newbook: Book.new %>
+
+    </div>
+    <div class="col-md-8 offset-md-1 mt-3">
+      <h2>Books</h2>
+
+      <%= render 'index', books: @records %>
+
+    </div>
+  </div>
+
+</div>

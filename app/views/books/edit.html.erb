@@ -26,17 +26,12 @@
         <%= f.text_area :body, class:"form-control" %>
         </div>
 
-        <div id="star-rate<%= @book.id%>"></div>
-        <script>
-          $('#star-rate<%= @book.id%>').raty({
-            size      : 36,
-            starOff   : '<%= asset_path('star-off.png') %>',
-            starOn    : '<%= asset_path('star-on.png') %>',
-            half      : false,
-            readOnly: true,
-            score: <%= @book.rate %>,
-          });
-        </script>
+        <div class=field>
+        <%= f.label :category, "Category" %><br />
+        <%= f.text_field :category, class:"form-control" %>
+        </div>
+
+        <%= render 'star', book: @book %>
 
         <div class=field>
         <%= f.submit "Update Book", class:"btn btn-success mt-2 mb-2" %>
